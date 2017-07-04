@@ -1,7 +1,7 @@
 ﻿{
   "dependencies": {
     "Microsoft.NETCore.UniversalWindowsPlatform": "5.2.2",
-    "Zebble": "4.0.197"
+    "Zebble": "4.0.204"
   },
   "frameworks": {
     "uap10.0": {}

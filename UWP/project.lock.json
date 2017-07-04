@@ -2453,7 +2453,7 @@
           }
         }
       },
-      "Zebble/4.0.197": {
+      "Zebble/4.0.204": {
         "type": "package",
         "dependencies": {
           "HtmlAgilityPack": "1.4.9.5",
@@ -4918,7 +4918,7 @@
           "lib/netcore50/System.Xml.XmlSerializer.dll": {}
         }
       },
-      "Zebble/4.0.197": {
+      "Zebble/4.0.204": {
         "type": "package",
         "dependencies": {
           "HtmlAgilityPack": "1.4.9.5",
@@ -7422,7 +7422,7 @@
           "runtimes/aot/lib/netcore50/System.Xml.XmlSerializer.dll": {}
         }
       },
-      "Zebble/4.0.197": {
+      "Zebble/4.0.204": {
         "type": "package",
         "dependencies": {
           "HtmlAgilityPack": "1.4.9.5",
@@ -9899,7 +9899,7 @@
           "lib/netcore50/System.Xml.XmlSerializer.dll": {}
         }
       },
-      "Zebble/4.0.197": {
+      "Zebble/4.0.204": {
         "type": "package",
         "dependencies": {
           "HtmlAgilityPack": "1.4.9.5",
@@ -12415,7 +12415,7 @@
           "runtimes/aot/lib/netcore50/System.Xml.XmlSerializer.dll": {}
         }
       },
-      "Zebble/4.0.197": {
+      "Zebble/4.0.204": {
         "type": "package",
         "dependencies": {
           "HtmlAgilityPack": "1.4.9.5",
@@ -14892,7 +14892,7 @@
           "lib/netcore50/System.Xml.XmlSerializer.dll": {}
         }
       },
-      "Zebble/4.0.197": {
+      "Zebble/4.0.204": {
         "type": "package",
         "dependencies": {
           "HtmlAgilityPack": "1.4.9.5",
@@ -17408,7 +17408,7 @@
           "runtimes/aot/lib/netcore50/System.Xml.XmlSerializer.dll": {}
         }
       },
-      "Zebble/4.0.197": {
+      "Zebble/4.0.204": {
         "type": "package",
         "dependencies": {
           "HtmlAgilityPack": "1.4.9.5",
@@ -24212,15 +24212,14 @@
         "system.xml.xmlserializer.nuspec"
       ]
     },
-    "Zebble/4.0.197": {
-      "sha512": "B9f4fr9IA8qXBuDYjinXQ6ZF3G5EJ6CDf9pBi/IJOh1QSQOYoZe5YsBnAYSuEB2AYn0GmmceS5HjAjbyRnHm7Q==",
+    "Zebble/4.0.204": {
+      "sha512": "YXlxR5miI21foGLkmycgPZT4iUQY7BS9qpupee33g6AnYlcgK5vakiFEd5CX5nceV79mD9drhti119XyOZ2q+Q==",
       "type": "package",
-      "path": "zebble/4.0.197",
+      "path": "zebble/4.0.204",
       "files": [
         "content/MonoAndroid10/Zebble.exe",
         "content/Zebble-LicenseAgreement.txt",
         "lib/MonoAndroid10/Zebble.Android.dll",
-        "lib/MonoAndroid10/Zebble.Android.dll.mdb",
         "lib/MonoAndroid10/Zebble.Android.pdb",
         "lib/UAP10/Zebble.UWP.dll",
         "lib/UAP10/Zebble.UWP.pdb",
@@ -24230,7 +24229,7 @@
         "lib/Xamarin.iOS10/Zebble.iOS.pdb",
         "tools/Zebble.exe",
         "tools/_Core.scss",
-        "zebble.4.0.197.nupkg.sha512",
+        "zebble.4.0.204.nupkg.sha512",
         "zebble.nuspec"
       ]
     }
@@ -24238,7 +24237,7 @@
   "projectFileDependencyGroups": {
     "": [
       "Microsoft.NETCore.UniversalWindowsPlatform >= 5.2.2",
-      "Zebble >= 4.0.197"
+      "Zebble >= 4.0.204"
     ],
     "UAP,Version=v10.0": []
   },
@@ -24255,7 +24254,7 @@
     },
     "dependencies": {
       "Microsoft.NETCore.UniversalWindowsPlatform": "5.2.2",
-      "Zebble": "[4.0.197, )"
+      "Zebble": "[4.0.204, )"
     },
     "frameworks": {
       "uap10.0": {}

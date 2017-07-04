@@ -20,6 +20,6 @@
 &lt;/plist&gt;
 </TargetiOSDevice>
     <ProjectView>ProjectFiles</ProjectView>
-    <SelectedDevice>iPhone Test 6 2</SelectedDevice>
+    <SelectedDevice>Device</SelectedDevice>
   </PropertyGroup>
 </Project>
