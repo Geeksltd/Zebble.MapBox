@@ -126,9 +126,6 @@ namespace Zebble.Plugin
                         }");
             r.AppendLine(@"
                             Redirect = function(url){" +
-#if UWP || IOS
-                              @"window.history.pushState('Annotation', 'Annotation', url);" +
-# endif
             @"window.location.href = url;
                             };
                 </script>
