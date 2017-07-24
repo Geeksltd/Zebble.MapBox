@@ -135,12 +135,12 @@ namespace Zebble.Plugin
             return r.ToString();
         }
 
-        void RenderAnnotation(Map.Annotation annotation)
+        void RenderAnnotation(Annotation annotation)
         {
             EvaluateJavaScriptFunction("AddAnnotation", new string[] { annotation.Location.Longitude.ToString(), annotation.Location.Latitude.ToString(), "'" + annotation.Title + "'", "'" + annotation.SubTitle + "'" });
         }
 
-        void UnrenderAnnotation(Map.Annotation annotation)
+        void UnrenderAnnotation(Annotation annotation)
         {
             // TODO: When rendering, keep a reference.
         }
