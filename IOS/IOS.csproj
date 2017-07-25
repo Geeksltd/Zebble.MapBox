@@ -56,7 +56,11 @@
     <Reference Include="System.Core" />
     <Reference Include="Xamarin.iOS" />
     <Reference Include="Zebble.iOS, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Zebble.4.0.210\lib\Xamarin.iOS10\Zebble.iOS.dll</HintPath>
+      <HintPath>..\packages\Zebble.4.0.239\lib\Xamarin.iOS10\Zebble.iOS.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Zebble.WebView.iOS, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Zebble.Plugin.WebView.4.1.216\lib\Xamarin.iOS10\Zebble.WebView.iOS.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>

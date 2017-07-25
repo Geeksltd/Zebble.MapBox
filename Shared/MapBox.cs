@@ -9,24 +9,21 @@
         Services.GeoLocation center = new Services.GeoLocation(51.5, 0.12);
         float zoom = 13;
         bool showsUserLocation = true;
-        List<Map.Annotation> annotations = new List<Map.Annotation>();
+        List<Annotation> annotations = new List<Annotation>();
 
         internal readonly AsyncEvent ApiZoomChanged = new AsyncEvent();
         internal readonly AsyncEvent ApiCenterChanged = new AsyncEvent();
-        internal event Action<Map.Annotation> AnnotationAdded, AnnotationRemoved;
-        public event Action<Map.Annotation> AnnotationClicked;
+        internal event Action<Annotation> AnnotationAdded, AnnotationRemoved;
+        public event Action<Annotation> AnnotationClicked;
 
-        public MapBox()
-        {
-            AccessToken = Config.Get("MapBox.Access.Token");
-        }
+        public MapBox() => AccessToken = Config.Get("MapBox.Access.Token");
 
         public string AccessToken { get; set; }
         public string StyleUrl { get; set; }
         public string AnnotationImagePath;
         public Size AnnotationImageSize = new Size(16, 16);
 
-        public IEnumerable<Map.Annotation> Annotations => annotations;
+        public IEnumerable<Annotation> Annotations => annotations;
 
         public Services.GeoLocation Center
         {
@@ -60,13 +57,13 @@
             }
         }
 
-        public void Add(params Map.Annotation[] annotations)
+        public void Add(params Annotation[] annotations)
         {
             this.annotations.AddRange(annotations);
             foreach (var a in annotations) AnnotationAdded?.Invoke(a);
         }
 
-        public void Remove(params Map.Annotation[] annotations)
+        public void Remove(params Annotation[] annotations)
         {
             this.annotations.Remove(annotations);
             foreach (var a in annotations) AnnotationRemoved?.Invoke(a);

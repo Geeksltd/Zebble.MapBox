@@ -9,7 +9,15 @@
     <Import_RootNamespace>Shared</Import_RootNamespace>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="$(MSBuildThisFileDirectory)Annotation.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)MapBox.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)MapBox.WebView.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="$(MSBuildThisFileDirectory)NuGet\CreatePackage.bat" />
+    <None Include="$(MSBuildThisFileDirectory)NuGet\Nuget.nuspec" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="$(MSBuildThisFileDirectory)Icon.png" />
   </ItemGroup>
 </Project>
