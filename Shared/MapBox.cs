@@ -3,10 +3,11 @@
     using System;
     using System.Collections.Generic;
     using Framework;
+    using Zebble.Services;
 
     public partial class MapBox
     {
-        Services.GeoLocation center = new Services.GeoLocation(51.5, 0.12);
+        GeoLocation center = new Services.GeoLocation(51.5, 0.12);
         float zoom = 13;
         bool showsUserLocation = true;
         List<Annotation> annotations = new List<Annotation>();
