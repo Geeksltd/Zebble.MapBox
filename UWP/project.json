@@ -1,18 +1,17 @@
 ﻿{
-    "dependencies": {
-        "Microsoft.NETCore.UniversalWindowsPlatform": "5.2.2",
-        "Zebble": "4.0.239",
-        "Zebble.Plugin.WebView": "4.1.216"
-    },
-    "frameworks": {
-        "uap10.0": {}
-    },
-    "runtimes": {
-        "win10-arm": {},
-        "win10-arm-aot": {},
-        "win10-x86": {},
-        "win10-x86-aot": {},
-        "win10-x64": {},
-        "win10-x64-aot": {}
-    }
+  "dependencies": {
+    "Zebble": "4.0.249",
+    "Zebble.Plugin.WebView": "4.1.227"
+  },
+  "frameworks": {
+    "uap10.0": {}
+  },
+  "runtimes": {
+    "win10-arm": {},
+    "win10-arm-aot": {},
+    "win10-x86": {},
+    "win10-x86-aot": {},
+    "win10-x64": {},
+    "win10-x64-aot": {}
+  }
 }

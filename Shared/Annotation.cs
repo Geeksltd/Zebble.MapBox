@@ -2,7 +2,6 @@
 {
     using System;
     using System.Collections.Generic;
-    using Framework;
     using Zebble.Services;
 
     partial class MapBox
