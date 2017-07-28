@@ -1,7 +1,5 @@
 ﻿namespace Zebble.Plugin
 {
-    using System;
-    using System.Collections.Generic;
     using Zebble.Services;
 
     partial class MapBox
