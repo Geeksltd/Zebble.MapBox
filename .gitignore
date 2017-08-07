@@ -20,3 +20,4 @@ UWP/project.lock.json
 TypeDetector.dll
 UWP/UWP.nuget.props
 UWP/UWP.nuget.targets
+GCopReport.json
