@@ -1,6 +1,6 @@
 ﻿{
   "dependencies": {
-    "Zebble": "4.0.252",
+    "Zebble": "4.0.267",
     "Zebble.Plugin.WebView": "4.1.227"
   },
   "frameworks": {
