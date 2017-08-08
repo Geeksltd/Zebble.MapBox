@@ -5,6 +5,7 @@ namespace Zebble.Plugin
     using System.Linq;
     using System.Text;
     using System.Threading.Tasks;
+    using Zebble.Services;
 
     partial class MapBox : WebView
     {
@@ -20,6 +21,7 @@ namespace Zebble.Plugin
 
             AnnotationAdded += RenderAnnotation;
             AnnotationRemoved += UnrenderAnnotation;
+            FitBoundsCalled += FitBoundsToMarkers;
 
             Html = GenerateHtml();
 
@@ -115,16 +117,25 @@ namespace Zebble.Plugin
 
                 if (StyleUrl.HasValue()) r.AppendLine($"L.mapbox.styleLayer('{StyleUrl}').addTo(map);");
             }
-            r.Append(@"AddAnnotation = function(long, lat, title, subtitle){
+            r.Append(@"var AddAnnotation = function(long, lat, title, subtitle){
                             var el = document.createElement('div');
                             el.className = 'marker'; 
                             var url = ""'http://app.link/Annotation_Tap_""+ subtitle.replace(/'/g, '') + ""'"";
                             var popup = new mapboxgl.Popup({offset: [-14,-35]}).
                             setHTML('<h3 onclick=""Redirect('+ url +'); "">' + title.replace(/'/g, '') + '</h3>');
                             new mapboxgl.Marker(el).setLngLat([long, lat]).setPopup(popup).addTo(map);
-                        }");
-            r.AppendLine(@"
-                            Redirect = function(url){" +
+                        };");
+            r.AppendLine(@"var FitBounds = function(slat, slong, elat, elong){
+                             map.fitBounds([[
+                                    slong,
+                                    slat
+                                ], 
+                                [
+                                   elong,
+                                   elat
+                                ]]);
+                        };");
+            r.AppendLine(@"Redirect = function(url){" +
             @"window.location.href = url;
                             };
                 </script>
@@ -137,6 +148,11 @@ namespace Zebble.Plugin
         void RenderAnnotation(Annotation annotation)
         {
             EvaluateJavaScriptFunction("AddAnnotation", new string[] { annotation.Location.Longitude.ToString(), annotation.Location.Latitude.ToString(), "'" + annotation.Title + "'", "'" + annotation.SubTitle + "'" });
+        }
+
+        void FitBoundsToMarkers(GeoLocation start, GeoLocation end)
+        {
+            EvaluateJavaScriptFunction("FitBounds", new string[] { start.Latitude.ToString(), start.Longitude.ToString(), end.Latitude.ToString(), end.Longitude.ToString() });
         }
 
         void UnrenderAnnotation(Annotation annotation)

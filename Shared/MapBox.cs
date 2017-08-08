@@ -1,6 +1,7 @@
 ﻿namespace Zebble.Plugin
 {
     using System;
+    using Zebble;
     using System.Collections.Generic;
     using Zebble.Services;
 
@@ -14,6 +15,7 @@
         internal readonly AsyncEvent ApiZoomChanged = new AsyncEvent();
         internal readonly AsyncEvent ApiCenterChanged = new AsyncEvent();
         internal event Action<Annotation> AnnotationAdded, AnnotationRemoved;
+        internal event Action<GeoLocation, GeoLocation> FitBoundsCalled;
         public event Action<Annotation> AnnotationClicked;
 
         public MapBox() => AccessToken = Config.Get("MapBox.Access.Token");
@@ -61,6 +63,11 @@
         {
             this.annotations.AddRange(annotations);
             foreach (var a in annotations) AnnotationAdded?.Invoke(a);
+        }
+
+        public void FitBounds(GeoLocation start, GeoLocation end)
+        {
+            FitBoundsCalled?.Invoke(start, end);
         }
 
         public void Remove(params Annotation[] annotations)
