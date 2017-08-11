@@ -1,8 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
   <metadata>
-    <id>Zebble.Plugin.MapBox</id>
-    <version>1.0.214</version>
+    <id>Zebble.MapBox</id>
+    <version>2.1.215</version>
     <title>MapBox for Zebble for Xamarin</title>
     <authors>Mobile App Technologies Ltd</authors>
     <projectUrl>https://github.com/Geeksltd/Zebble.MapBox</projectUrl>
