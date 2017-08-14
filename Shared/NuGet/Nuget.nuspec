@@ -3,14 +3,14 @@
   <metadata>
     <id>Zebble.MapBox</id>
     <version>2.1.215</version>
-    <title>MapBox for Zebble for Xamarin</title>
+    <title>MapBox for Zebble (Xamarin)</title>
     <authors>Mobile App Technologies Ltd</authors>
     <projectUrl>https://github.com/Geeksltd/Zebble.MapBox</projectUrl>
     <iconUrl>https://raw.githubusercontent.com/Geeksltd/Zebble.MapBox/master/Shared/Icon.png</iconUrl>
     <copyright>Copyright ©2017 Mobile App Technologies Ltd - All rights reserved.</copyright>
-    <description>MapBox plugin for Zebble for Xamarin.</description>
+    <description>MapBox plugin for Zebble apps.</description>
     <dependencies>
-	  <dependency id="Zebble.Plugin.WebView" version="4.1.227" />
+      <dependency id="Zebble.Plugin.WebView" version="4.1.227" />
       <!-- <dependency id="Xamarin.MapboxSDK.iOS" version="3.3.4.1" /> -->
       <!-- <dependency id="MapboxAndroidSdk" version="0.7.4" /> -->
     </dependencies>
