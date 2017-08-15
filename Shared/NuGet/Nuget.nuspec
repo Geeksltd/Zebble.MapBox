@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
   <metadata>
     <id>Zebble.MapBox</id>
-    <version>2.1.218</version>
+    <version>2.1.219</version>
     <title>MapBox for Zebble (Xamarin)</title>
     <authors>Mobile App Technologies Ltd</authors>
     <projectUrl>https://github.com/Geeksltd/Zebble.MapBox</projectUrl>
