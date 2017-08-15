@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
   <metadata>
     <id>Zebble.MapBox</id>
-    <version>2.1.215</version>
+    <version>2.1.218</version>
     <title>MapBox for Zebble (Xamarin)</title>
     <authors>Mobile App Technologies Ltd</authors>
     <projectUrl>https://github.com/Geeksltd/Zebble.MapBox</projectUrl>
@@ -10,7 +10,7 @@
     <copyright>Copyright ©2017 Mobile App Technologies Ltd - All rights reserved.</copyright>
     <description>MapBox plugin for Zebble apps.</description>
     <dependencies>
-      <dependency id="Zebble.Plugin.WebView" version="4.1.227" />
+      <dependency id="Zebble.WebView" version="4.1.227" />
       <!-- <dependency id="Xamarin.MapboxSDK.iOS" version="3.3.4.1" /> -->
       <!-- <dependency id="MapboxAndroidSdk" version="0.7.4" /> -->
     </dependencies>
