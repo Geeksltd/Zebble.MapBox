@@ -16,7 +16,8 @@
     <GenerateSerializationAssemblies>Off</GenerateSerializationAssemblies>
     <AndroidUseLatestPlatformSdk>True</AndroidUseLatestPlatformSdk>
     <TargetFrameworkVersion>v7.1</TargetFrameworkVersion>
-    <NuGetPackageImportStamp></NuGetPackageImportStamp>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -74,8 +75,7 @@
       <HintPath>..\packages\Zebble.4.1.290\lib\MonoAndroid10\Zebble.Android.dll</HintPath>
     </Reference>
     <Reference Include="Zebble.WebView.Android, Version=0.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Zebble.WebView.4.2.233\lib\MonoAndroid10\Zebble.WebView.Android.dll</HintPath>
-      <Private>False</Private>
+      <HintPath>..\packages\Zebble.WebView.4.2.234\lib\MonoAndroid10\Zebble.WebView.Android.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>

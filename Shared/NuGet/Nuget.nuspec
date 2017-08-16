@@ -10,7 +10,7 @@
     <copyright>Copyright ©2017 Mobile App Technologies Ltd - All rights reserved.</copyright>
     <description>MapBox plugin for Zebble apps.</description>
     <dependencies>
-      <dependency id="Zebble.WebView" version="4.1.227" />
+      <dependency id="Zebble.WebView" version="4.2.234" />
       <!-- <dependency id="Xamarin.MapboxSDK.iOS" version="3.3.4.1" /> -->
       <!-- <dependency id="MapboxAndroidSdk" version="0.7.4" /> -->
     </dependencies>
