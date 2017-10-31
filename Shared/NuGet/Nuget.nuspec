@@ -4,10 +4,10 @@
     <id>Zebble.MapBox</id>
     <version>2.1.219</version>
     <title>MapBox for Zebble (Xamarin)</title>
-    <authors>Mobile App Technologies Ltd</authors>
+    <authors>Geeks Ltd</authors>
     <projectUrl>https://github.com/Geeksltd/Zebble.MapBox</projectUrl>
     <iconUrl>https://raw.githubusercontent.com/Geeksltd/Zebble.MapBox/master/Shared/Icon.png</iconUrl>
-    <copyright>Copyright ©2017 Mobile App Technologies Ltd - All rights reserved.</copyright>
+    <copyright>Copyright ©2017 Geeks Ltd - All rights reserved.</copyright>
     <description>MapBox plugin for Zebble apps.</description>
     <dependencies>
       <dependency id="Zebble.WebView" version="4.2.234" />
