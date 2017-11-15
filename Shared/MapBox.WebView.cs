@@ -70,13 +70,15 @@ namespace Zebble.Plugin
             <style>.marker{
             width:25px;
             height:32px;
-            margin-left: -25px;
-            margin-top: -32px;
+            margin-left: -30px;
+            margin-top: -37px;
             background-image: url(" +
             Config.Get("Api.Base.Url").OrEmpty().TrimEnd("/")
             + AnnotationImagePath +
             @"); 
             background-size: cover;
+            border:5px solid transparent;
+            background-repeat: no-repeat;
             }
             .mapboxgl-popup {
                 max-width: 200px;
