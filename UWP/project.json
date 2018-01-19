@@ -1,10 +1,11 @@
 ﻿{
   "dependencies": {
-    "Zebble": "4.2.342",
-    "Zebble.WebView": "4.2.234"
+    "Microsoft.NETCore.UniversalWindowsPlatform": "6.0.6",
+    "Zebble": "4.3.100",
+    "Zebble.WebView": "4.2.239"
   },
   "frameworks": {
-    "uap10.0": {}
+    "uap10.0.15063": {}
   },
   "runtimes": {
     "win10-arm": {},
@@ -15,7 +16,3 @@
     "win10-x64-aot": {}
   }
 }
-
-
-
-
