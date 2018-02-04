@@ -1,8 +1,8 @@
-﻿namespace Zebble.Plugin
+﻿namespace Zebble.Plugin.MBox
 {
     using System;
-    using Zebble;
     using System.Collections.Generic;
+    using Zebble;
     using Zebble.Services;
 
     public partial class MapBox
@@ -29,7 +29,7 @@
 
         public Services.GeoLocation Center
         {
-            get { return center; }
+            get => center;
             set
             {
                 if (center == value || value == null) return;
@@ -40,7 +40,7 @@
 
         public bool ShowsUserLocation
         {
-            get { return showsUserLocation; }
+            get => showsUserLocation;
             set
             {
                 if (showsUserLocation == value) return;
@@ -50,7 +50,7 @@
 
         public float Zoom
         {
-            get { return zoom; }
+            get => zoom;
             set
             {
                 if (zoom.AlmostEquals(value)) return;

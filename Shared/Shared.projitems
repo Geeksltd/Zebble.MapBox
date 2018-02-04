@@ -9,9 +9,31 @@
     <Import_RootNamespace>Shared</Import_RootNamespace>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="$(MSBuildThisFileDirectory)Annotation.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)AnnotationsAndFeatures\Annotation.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)AnnotationsAndFeatures\IFeature.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)AnnotationsAndFeatures\MultiPolylineAnnotation.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)AnnotationsAndFeatures\MultiPolylineFeature.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)AnnotationsAndFeatures\PointAnnotation.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)AnnotationsAndFeatures\PointFeature.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)AnnotationsAndFeatures\PolylineAnnotation.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)AnnotationsAndFeatures\PolylineFeature.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)CoordinateBounds.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Layers\CircleLayer.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Layers\FillLayer.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Layers\Layer.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Layers\LineLayer.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Layers\SymbolLayer.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Map.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)MapBox.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)MapBox.WebView.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)MapStyle.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)OfflinePack\OfflinePack.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)OfflinePack\OfflinePackProgress.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)OfflinePack\OfflinePackRegion.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)OfflinePack\OfflinePackState.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)OfflinePack\OfflineStorage.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Position.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ShapeSource.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="$(MSBuildThisFileDirectory)NuGet\%40CreatePackage.bat" />
