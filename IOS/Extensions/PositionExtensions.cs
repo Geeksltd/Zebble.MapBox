@@ -1,5 +1,4 @@
-﻿using System;
-using CoreLocation;
+﻿using CoreLocation;
 
 namespace Zebble.Plugin.MBox
 {

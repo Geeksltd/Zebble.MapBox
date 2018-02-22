@@ -24,13 +24,12 @@ namespace Zebble.Plugin.MBox
             RotateDegreeChanged = new AsyncEvent();
             MapStyleChanged = new AsyncEvent();
             AnnotationsChanged = new AsyncEvent();
-
         }
         public bool IsMarkerClicked { get; set; }
 
         public bool IsTouchInMap { get; set; }
 
-        private Position _center = new Position();
+        Position _center = new Position();
         public Position Center
         {
             get => _center;
@@ -44,7 +43,7 @@ namespace Zebble.Plugin.MBox
 
         public AsyncEvent CenterChanged;
 
-        private Position _userLocation = new Position();
+        Position _userLocation = new Position();
         public Position UserLocation
         {
             get => _userLocation;
@@ -58,7 +57,7 @@ namespace Zebble.Plugin.MBox
 
         public AsyncEvent UserLocationChanged;
 
-        private double _zoomLevel = 10.0;
+        double _zoomLevel = 10.0;
         public double ZoomLevel
         {
             get => _zoomLevel;
@@ -73,7 +72,7 @@ namespace Zebble.Plugin.MBox
 
         public AsyncEvent ZoomLevelChanged;
 
-        private double _pitch = 0.0;
+        double _pitch;
         public double Pitch
         {
             get => _pitch;
@@ -87,7 +86,7 @@ namespace Zebble.Plugin.MBox
 
         public AsyncEvent PitchChanged;
 
-        private bool _pitchEnabled;
+        bool _pitchEnabled;
         public bool PitchEnabled
         {
             get => _pitchEnabled;
@@ -101,7 +100,7 @@ namespace Zebble.Plugin.MBox
 
         public AsyncEvent PitchEnabledChanged;
 
-        private bool _rotateEnabled;
+        bool _rotateEnabled;
         public bool RotateEnabled
         {
             get => _rotateEnabled;
@@ -115,7 +114,7 @@ namespace Zebble.Plugin.MBox
 
         public AsyncEvent RotateEnabledChanged;
 
-        private double _rotateDegree = 0.0;
+        double _rotateDegree;
         public double RotatedDegree
         {
             get => _rotateDegree;
@@ -129,7 +128,7 @@ namespace Zebble.Plugin.MBox
 
         public AsyncEvent RotateDegreeChanged;
 
-        private MapStyle _mapStyle = new MapStyle();
+        MapStyle _mapStyle = new MapStyle();
         public MapStyle MapStyle
         {
             get => _mapStyle;
@@ -192,4 +191,3 @@ namespace Zebble.Plugin.MBox
         public Action<Position, Point> DidTapOnMapCommand { set; get; }
     }
 }
-

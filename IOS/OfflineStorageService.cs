@@ -1,10 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using Foundation;
+﻿using Foundation;
 using Mapbox;
-using System.Threading.Tasks;
-using System.Linq;
 using ObjCRuntime;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
 
 namespace Zebble.Plugin.MBox
 {
@@ -28,14 +28,15 @@ namespace Zebble.Plugin.MBox
             base.Dispose(disposing);
         }
 
-        private void OnOfflinePackError(NSNotification notification)
+        void OnOfflinePackError(NSNotification notification)
         {
             if (downloadDelegate == null)
             {
                 return;
             }
-            MGLOfflinePack pack = notification.Object as MGLOfflinePack;
-            NSError error = notification.UserInfo[MGLOfflinePackKeys.UserInfoKeyError] as NSError;
+
+            var pack = notification.Object as MGLOfflinePack;
+            var error = notification.UserInfo[MGLOfflinePackKeys.UserInfoKeyError] as NSError;
             OfflinePack formsPack;
             var hash = pack.GetNativeHash();
             if (tempPacks.ContainsKey(hash))
@@ -48,16 +49,18 @@ namespace Zebble.Plugin.MBox
             {
                 formsPack = pack.ToFormsPack();
             }
+
             downloadDelegate.OfflinePackDidGetError(formsPack, error.LocalizedFailureReason);
         }
 
-        private void OnMaximumMapboxTilesReached(NSNotification notification)
+        void OnMaximumMapboxTilesReached(NSNotification notification)
         {
             if (downloadDelegate == null)
             {
                 return;
             }
-            MGLOfflinePack pack = notification.Object as MGLOfflinePack;
+
+            var pack = notification.Object as MGLOfflinePack;
 
             var maximumCount = notification.UserInfo[MGLOfflinePackKeys.UserInfoKeyMaximumCount] as NSNumber;
             var hash = pack.GetNativeHash();
@@ -72,17 +75,18 @@ namespace Zebble.Plugin.MBox
             {
                 formsPack = pack.ToFormsPack();
             }
+
             downloadDelegate.MaximumMapboxTilesWasReached(formsPack, maximumCount.UInt64Value);
         }
 
-        private void OnOfflinePackProgressChanged(NSNotification notification)
+        void OnOfflinePackProgressChanged(NSNotification notification)
         {
             if (downloadDelegate == null)
             {
                 return;
             }
 
-            MGLOfflinePack pack = notification.Object as MGLOfflinePack;
+            var pack = notification.Object as MGLOfflinePack;
             var hash = pack.GetNativeHash();
             var completed = pack.State == MGLOfflinePackState.Complete || (pack.Progress.countOfResourcesExpected == pack.Progress.countOfResourcesCompleted);
             OfflinePack formsPack;
@@ -104,6 +108,7 @@ namespace Zebble.Plugin.MBox
                     tempPacks.Add(hash, formsPack);
                 }
             }
+
             downloadDelegate.OfflinePackProgressDidChange(formsPack);
         }
 
@@ -130,6 +135,7 @@ namespace Zebble.Plugin.MBox
                     keys.Add((NSString)key);
                     values.Add((NSString)packInfo[key]);
                 }
+
                 var userInfo = NSDictionary.FromObjectsAndKeys(keys.ToArray(), values.ToArray());
                 context = NSKeyedArchiver.ArchivedDataWithRootObject(userInfo);
             }
@@ -183,6 +189,7 @@ namespace Zebble.Plugin.MBox
                 System.Diagnostics.Debug.WriteLine("[Exception]: " + ex.Message);
                 tsc.TrySetResult(false);
             }
+
             return tsc.Task;
         }
 

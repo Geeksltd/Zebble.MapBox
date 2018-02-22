@@ -1,5 +1,4 @@
-﻿using System;
-using Mapbox;
+﻿using Mapbox;
 
 namespace Zebble.Plugin.MBox
 {
@@ -20,6 +19,7 @@ namespace Zebble.Plugin.MBox
                 output.MinimumZoomLevel = tpoRegion.MinimumZoomLevel;
                 output.StyleURL = tpoRegion.StyleURL?.AbsoluteString;
             }
+
             return output;
         }
     }

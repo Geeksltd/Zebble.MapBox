@@ -1,19 +1,15 @@
-﻿using System;
-
-namespace Zebble.Plugin.MBox
+﻿namespace Zebble.Plugin.MBox
 {
-    using Zebble.Services;
-
     public class Annotation
     {
-        private string _id = string.Empty;
+        string id = string.Empty;
         public string Id
         {
-            get => _id;
+            get => id;
             set
             {
-                if (_id == value) return;
-                _id = value;
+                if (id == value) return;
+                id = value;
                 AnnotationIdChanged.Raise();
                 AnnotationChanged.Raise();
             }
@@ -21,28 +17,28 @@ namespace Zebble.Plugin.MBox
 
         public AsyncEvent AnnotationIdChanged = new AsyncEvent();
 
-        string _title = string.Empty;
+        string title = string.Empty;
         public string Title
         {
-            get => _title;
+            get => title;
             set
             {
-                if (_title == value) return;
-                _title = value;
+                if (title == value) return;
+                title = value;
                 AnnotationTitleChanged.Raise();
                 AnnotationChanged.Raise();
             }
         }
         public AsyncEvent AnnotationTitleChanged = new AsyncEvent();
 
-        private string _subtitle = string.Empty;
+        string subtitle = string.Empty;
         public string SubTitle
         {
-            get => _subtitle;
+            get => subtitle;
             set
             {
-                if (_subtitle == value) return;
-                _subtitle = value;
+                if (subtitle == value) return;
+                subtitle = value;
                 AnnotationSubtitleChanged.Raise();
                 AnnotationChanged.Raise();
             }

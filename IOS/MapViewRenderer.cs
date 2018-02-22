@@ -1,16 +1,16 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using CoreGraphics;
+﻿using CoreGraphics;
+using CoreLocation;
 using Foundation;
 using Mapbox;
-using CoreLocation;
-using System.Collections.Specialized;
-using UIKit;
-using System.ComponentModel;
+using System;
 using System.Collections;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Collections.Specialized;
+using System.ComponentModel;
+using System.Linq;
 using System.Threading.Tasks;
+using UIKit;
 
 namespace Zebble.Plugin.MBox
 {
@@ -173,7 +173,6 @@ namespace Zebble.Plugin.MBox
                     }
                 });
             }
-
         }
 
         protected void SetupFunctions()
@@ -214,6 +213,7 @@ namespace Zebble.Plugin.MBox
                     {
                         continue;
                     }
+
                     string id = null;
                     if (feature.Identifier != null)
                     {
@@ -226,11 +226,11 @@ namespace Zebble.Plugin.MBox
                             id = feature.Identifier.ToString();
                         }
                     }
+
                     if (id == null || output.Any((arg) => (arg as Annotation)?.Id == id))
                     {
                         continue;
                     }
-
 
                     var geoData = feature.GeoJSONDictionary;
                     if (geoData == null) continue;
@@ -253,6 +253,7 @@ namespace Zebble.Plugin.MBox
                         {
                             coorArr = coordinates as NSArray;
                         }
+
                         if (feature is MGLPolylineFeature polylineFeature)
                         {
                             ifeat = new PolylineFeature();
@@ -271,9 +272,9 @@ namespace Zebble.Plugin.MBox
                                         childArr.GetItem<NSNumber>(0).DoubleValue); //long
                                     coorsList.Add(coord);
                                 }
+
                                 ((PolylineFeature)ifeat).Coordinates = new ObservableCollection<Position>(coorsList).ToArray();
                             }
-
                         }
                         else if (feature is MGLMultiPolylineFeature)
                         {
@@ -344,9 +345,11 @@ namespace Zebble.Plugin.MBox
                                 }
                             }
                         }
+
                         return true;
                     }
                 }
+
                 return false;
             };
 
@@ -365,6 +368,7 @@ namespace Zebble.Plugin.MBox
                     View.MapStyle.CustomLayers.ElementAt(i).IsVisible = isVisible;
                     break;
                 }
+
                 return true;
             };
 
@@ -420,6 +424,7 @@ namespace Zebble.Plugin.MBox
                 output.Add((NSString)acceptedId);
                 output.Add((NSString)(acceptedId + " (1)"));
             }
+
             return new NSSet<NSString>(output);
         }
 
@@ -444,11 +449,13 @@ namespace Zebble.Plugin.MBox
             {
                 return;
             }
+
             var annots = new List<MGLShape>();
             foreach (var at in annotations)
             {
                 annots.AddRange(currentAnnotations.Select(curAnnot => curAnnot as MGLShape).Where(shape => !string.IsNullOrEmpty(shape?.Id())).Where(shape => shape.Id() == at.Id));
             }
+
             MapView.RemoveAnnotations(annots.ToArray());
         }
 
@@ -460,7 +467,7 @@ namespace Zebble.Plugin.MBox
             }
         }
 
-        private void OnAnnotationsCollectionChanged(object sender, NotifyCollectionChangedEventArgs e)
+        void OnAnnotationsCollectionChanged(object sender, NotifyCollectionChangedEventArgs e)
         {
             switch (e.Action)
             {
@@ -475,6 +482,7 @@ namespace Zebble.Plugin.MBox
                                 annots.Add(shape);
                             }
                         }
+
                         MapView.AddAnnotations(annots.ToArray());
                         break;
                     }
@@ -496,6 +504,7 @@ namespace Zebble.Plugin.MBox
                                 annots.Add(shape);
                             }
                         }
+
                         MapView.AddAnnotations(annots.ToArray());
                         break;
                     }
@@ -514,9 +523,9 @@ namespace Zebble.Plugin.MBox
                 case NotifyCollectionChangedAction.Reset:
                     var layersToRemove = MapView.Style.Layers.Where(layer => layer.Identifier.IsCustomId()).ToList();
                     foreach (var layer in layersToRemove)
-                    {
                         MapView.Style.RemoveLayer(layer);
-                    }
+
+
                     layersToRemove.Clear();
                     break;
                 case NotifyCollectionChangedAction.Replace:
@@ -537,18 +546,21 @@ namespace Zebble.Plugin.MBox
             {
                 return;
             }
+
             foreach (Layer layer in layers)
             {
                 if (string.IsNullOrEmpty(layer.Id))
                 {
                     continue;
                 }
+
                 var id = layer.Id.ToCustomId();
                 var oldLayer = MapView.Style.LayerWithIdentifier(id);
                 if (oldLayer != null)
                 {
                     MapView.Style.RemoveLayer(oldLayer);
                 }
+
                 if (!(layer is StyleLayer sl)) continue;
                 var newLayer = GetStyleLayer(sl, id);
                 if (newLayer != null)
@@ -564,12 +576,14 @@ namespace Zebble.Plugin.MBox
             {
                 return;
             }
+
             foreach (Layer layer in layers)
             {
                 if (string.IsNullOrEmpty(layer.Id))
                 {
                     continue;
                 }
+
                 var id = layer.Id.ToCustomId();
                 var oldLayer = MapView.Style.LayerWithIdentifier(id);
                 if (oldLayer != null)
@@ -592,9 +606,9 @@ namespace Zebble.Plugin.MBox
                 case NotifyCollectionChangedAction.Reset:
                     var sourcesToRemove = MapView.Style.Sources.Cast<MGLSource>().Where(source => source.Identifier.IsCustomId()).ToList();
                     foreach (var source in sourcesToRemove)
-                    {
                         MapView.Style.RemoveSource(source);
-                    }
+
+
                     sourcesToRemove.Clear();
                     break;
                 case NotifyCollectionChangedAction.Replace:
@@ -610,6 +624,7 @@ namespace Zebble.Plugin.MBox
             {
                 return;
             }
+
             foreach (ShapeSource source in sources)
             {
                 if (source.Id != null && source.Shape != null)
@@ -636,6 +651,7 @@ namespace Zebble.Plugin.MBox
             {
                 return;
             }
+
             foreach (ShapeSource source in sources)
             {
                 if (source.Id == null) continue;
@@ -661,9 +677,9 @@ namespace Zebble.Plugin.MBox
                     {
                         var polyline = annotation as PolylineAnnotation;
                         shape = PolyLineWithCoordinates(polyline.Coordinates.ToArray());
-                        //var notifiyCollection = polyline.Coordinates as INotifyCollectionChanged;
-                        //if (notifiyCollection != null)
-                        //{
+                        // var notifiyCollection = polyline.Coordinates as INotifyCollectionChanged;
+                        // if (notifiyCollection != null)
+                        // {
                         //    notifiyCollection.CollectionChanged += (sender, e) => {
                         //        if (e.Action == NotifyCollectionChangedAction.Add)
                         //        {
@@ -678,7 +694,7 @@ namespace Zebble.Plugin.MBox
                         //            (shape as MGLPolyline).RemoveCoordinatesInRange(new NSRange(e.OldStartingIndex, e.OldItems.Count));
                         //        }
                         //    };
-                        //}
+                        // }
 
                         break;
                     }
@@ -689,6 +705,7 @@ namespace Zebble.Plugin.MBox
                         {
                             return null;
                         }
+
                         if (polyline != null)
                         {
                             var lines = new MGLPolyline[polyline.Coordinates.Length];
@@ -698,23 +715,29 @@ namespace Zebble.Plugin.MBox
                                 {
                                     continue;
                                 }
+
                                 lines[i] = PolyLineWithCoordinates(polyline.Coordinates[i]);
                             }
+
                             shape = MGLMultiPolyline.MultiPolylineWithPolylines(lines);
                         }
+
                         break;
                     }
             }
+
             if (shape != null)
             {
                 if (annotation.Title != null)
                 {
                     shape.Title = annotation.Title;
                 }
+
                 if (annotation.SubTitle != null)
                 {
                     shape.Subtitle = annotation.SubTitle;
                 }
+
                 if (!string.IsNullOrEmpty(annotation.Id))
                 {
                     shape.SetId(annotation.Id);
@@ -730,16 +753,18 @@ namespace Zebble.Plugin.MBox
             {
                 return null;
             }
+
             var first = positions[0].ToCLCoordinate();
             var output = MGLPolyline.PolylineWithCoordinates(ref first, 1);
             var i = 1;
             while (i < positions.Length)
             {
                 var coord = positions[i].ToCLCoordinate();
-                //TODO
-                //output.AppendCoordinates(ref coord, 1);
+                // TODO
+                // output.AppendCoordinates(ref coord, 1);
                 i++;
             }
+
             return output;
         }
 
@@ -780,22 +805,27 @@ namespace Zebble.Plugin.MBox
                     View.MapStyle.SetUrl(mapView.StyleURL.AbsoluteString);
                     View.MapStyle.Name = style.Name;
                 }
+
                 newStyle = View.MapStyle;
             }
+
             if (View.MapStyle.CustomSources != null)
             {
                 if (View.MapStyle.CustomSources is INotifyCollectionChanged notifiyCollection)
                 {
                     notifiyCollection.CollectionChanged += OnShapeSourcesCollectionChanged;
                 }
+
                 AddSources(View.MapStyle.CustomSources.ToList());
             }
+
             if (View.MapStyle.CustomLayers != null)
             {
                 if (View.MapStyle.CustomLayers is INotifyCollectionChanged notifiyCollection)
                 {
                     notifiyCollection.CollectionChanged += OnLayersCollectionChanged;
                 }
+
                 AddLayers(View.MapStyle.CustomLayers.ToList());
             }
 
@@ -830,6 +860,7 @@ namespace Zebble.Plugin.MBox
             {
                 return View.CanShowCalloutChecker.Invoke(shape.Id());
             }
+
             return true;
         }
         #endregion
@@ -855,6 +886,7 @@ namespace Zebble.Plugin.MBox
                     {
                         continue;
                     }
+
                     output[key] = (string)str;
                 }
                 else if (fromDict[key] is NSNumber)
@@ -870,17 +902,17 @@ namespace Zebble.Plugin.MBox
                     output[key] = fromDict[key].ToString();
                 }
             }
+
             return output;
         }
 
         public void Dispose()
         {
-
         }
 
         #region STYLELAYER
 
-        private NSObject GetValueFromCameraStyleFunction(MGLCameraStyleFunction csFunc)
+        NSObject GetValueFromCameraStyleFunction(MGLCameraStyleFunction csFunc)
         {
             if (csFunc.Stops == null || csFunc.Stops.Count == 0) return null;
             MGLStyleValue output = null;
@@ -900,8 +932,10 @@ namespace Zebble.Plugin.MBox
                         {
                             break;
                         }
+
                         i++;
                     }
+
                     break;
                 case MGLInterpolationMode.Exponential:
                     break;
@@ -911,14 +945,16 @@ namespace Zebble.Plugin.MBox
                     break;
                 default: break;
             }
+
             if (output == null)
             {
                 output = csFunc.Stops.Values[0];
             }
+
             return GetObjectFromStyleValue(output);
         }
 
-        private NSObject GetObjectFromStyleValue(MGLStyleValue value)
+        NSObject GetObjectFromStyleValue(MGLStyleValue value)
         {
             switch (value)
             {
@@ -927,19 +963,22 @@ namespace Zebble.Plugin.MBox
                 case MGLCameraStyleFunction csFunc:
                     return GetValueFromCameraStyleFunction(csFunc);
             }
+
             if (value != null && value.RespondsToSelector(new ObjCRuntime.Selector("rawValue")))
             {
                 return value.ValueForKey((NSString)"rawValue");
             }
+
             return value;
         }
 
-        private MGLVectorStyleLayer GetStyleLayer(StyleLayer styleLayer, NSString id)
+        MGLVectorStyleLayer GetStyleLayer(StyleLayer styleLayer, NSString id)
         {
             if (string.IsNullOrEmpty(styleLayer.SourceId))
             {
                 return null;
             }
+
             var sourceId = styleLayer.SourceId.ToCustomId();
 
             var source = MapView.Style.SourceWithIdentifier(sourceId);
@@ -947,6 +986,7 @@ namespace Zebble.Plugin.MBox
             {
                 return null;
             }
+
             if (styleLayer is CircleLayer circleLayer)
             {
                 var newLayer = new MGLCircleStyleLayer(id, source)
@@ -961,6 +1001,7 @@ namespace Zebble.Plugin.MBox
                     newLayer.CircleStrokeOpacity = MGLStyleValue.ValueWithRawValue(NSNumber.FromDouble(circleLayer.StrokeOpacity));
                     newLayer.CircleStrokeWidth = MGLStyleValue.ValueWithRawValue(NSNumber.FromDouble(circleLayer.StrokeWidth));
                 }
+
                 return newLayer;
             }
 
@@ -975,11 +1016,12 @@ namespace Zebble.Plugin.MBox
                 {
                     var arr = new NSMutableArray<NSNumber>();
                     foreach (var dash in lineLayer.Dashes)
-                    {
                         arr.Add(NSNumber.FromDouble(dash));
-                    }
+
+
                     newLayer.LineDashPattern = MGLStyleValue.ValueWithRawValue(arr);
                 }
+
                 return newLayer;
             }
 
@@ -1027,6 +1069,7 @@ namespace Zebble.Plugin.MBox
                         newLayer.IconImageName = imgName.ToString();
                     }
                 }
+
                 return newLayer;
             }
 
@@ -1039,7 +1082,6 @@ namespace Zebble.Plugin.MBox
 
                 if (ll.LineDashPattern != null)
                 {
-
                     if (GetObjectFromStyleValue(ll.LineDashPattern) is NSArray arr && arr.Count != 0)
                     {
                         var dash = new List<double>();
@@ -1048,13 +1090,15 @@ namespace Zebble.Plugin.MBox
                             var obj = arr.GetItem<NSNumber>(i);
                             dash.Add(obj.DoubleValue);
                         }
+
                         newLayer.Dashes = dash.ToArray();
                     }
                     else
                     {
-                        //TODO
+                        // TODO
                     }
                 }
+
                 return newLayer;
             }
 
@@ -1081,14 +1125,12 @@ namespace Zebble.Plugin.MBox
 
         #endregion
 
-
-
         public IntPtr Handle { get; }
     }
 
     public static class NsDateExtensions
     {
-        private static DateTime _nsRef = new DateTime(2001, 1, 1, 0, 0, 0, 0, DateTimeKind.Local); // last zero is millisecond
+        static DateTime _nsRef = new DateTime(2001, 1, 1, 0, 0, 0, 0, DateTimeKind.Local); // last zero is millisecond
 
         public static DateTimeOffset ToDateTimeOffset(this NSDate date)
         {
@@ -1118,6 +1160,7 @@ namespace Zebble.Plugin.MBox
             {
                 return str.Substring(CustomPrefix.Length);
             }
+
             return str;
         }
     }

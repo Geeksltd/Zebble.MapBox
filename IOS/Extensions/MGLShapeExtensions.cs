@@ -1,7 +1,7 @@
-﻿using System;
-using System.Runtime.InteropServices;
-using Foundation;
+﻿using Foundation;
 using Mapbox;
+using System;
+using System.Runtime.InteropServices;
 
 namespace Zebble.Plugin.MBox
 {
@@ -26,7 +26,7 @@ namespace Zebble.Plugin.MBox
         static extern IntPtr objc_getAssociatedObject(
             IntPtr pointer, IntPtr key);
 
-        private static T GetProperty<T>(
+        static T GetProperty<T>(
             this MGLShape controller,
             NSString propertyKey) where T : NSObject
         {
@@ -38,7 +38,7 @@ namespace Zebble.Plugin.MBox
             return ObjCRuntime.Runtime.GetNSObject<T>(pointer);
         }
 
-        private static void SetProperty<T>(
+        static void SetProperty<T>(
             this MGLShape controller,
             NSString propertyKey,
             T value,
@@ -63,19 +63,19 @@ namespace Zebble.Plugin.MBox
         {
             shape.SetProperty(kId, (NSString)id, AssociationPolicy.RetainNonAtomic);
         }
-        //public static bool IsShowingLoadingIndicator(this UIViewController viewController)
-        //{
-        //	var prop = viewController.GetProperty<NSNumber>(kIsShowingLoadingIndicator);
-        //	if (prop != null)
-        //	{
-        //		return prop.BoolValue;
-        //	}
-        //	return false;
-        //}
+        // public static bool IsShowingLoadingIndicator(this UIViewController viewController)
+        // {
+        // 	var prop = viewController.GetProperty<NSNumber>(kIsShowingLoadingIndicator);
+        // 	if (prop != null)
+        // 	{
+        // 		return prop.BoolValue;
+        // 	}
+        // 	return false;
+        // }
 
-        //public static void SetIsShowingLoadingIndicator(this UIViewController viewController, bool isShowing)
-        //{
-        //	viewController.SetProperty(kIsShowingLoadingIndicator, NSNumber.FromBoolean(isShowing), AssociationPolicy.RetainNonAtomic);
-        //}
+        // public static void SetIsShowingLoadingIndicator(this UIViewController viewController, bool isShowing)
+        // {
+        // 	viewController.SetProperty(kIsShowingLoadingIndicator, NSNumber.FromBoolean(isShowing), AssociationPolicy.RetainNonAtomic);
+        // }
     }
 }

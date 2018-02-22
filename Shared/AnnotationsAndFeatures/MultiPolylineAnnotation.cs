@@ -2,13 +2,13 @@
 {
     public class MultiPolylineAnnotation : Annotation
     {
-        Position[][] _coordinates = new Position[1][];
+        Position[][] coordinates = new Position[1][];
         public Position[][] Coordinates
         {
-            get => _coordinates;
+            get => coordinates;
             set
             {
-                _coordinates = value;
+                coordinates = value;
                 AnnotationCoordinatesChanged.Raise();
                 AnnotationChanged.Raise();
             }

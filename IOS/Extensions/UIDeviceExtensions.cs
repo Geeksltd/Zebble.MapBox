@@ -6,7 +6,7 @@ namespace Zebble.Plugin.MBox
 {
     public static class UIDeviceExtensions
     {
-        private const string HardwareProperty = "hw.machine";
+        const string HARDWARE_PROPERTY = "hw.machine";
 
         [DllImport("libc", CallingConvention = CallingConvention.Cdecl)]
         static internal extern int sysctlbyname([MarshalAs(UnmanagedType.LPStr)] string property, IntPtr output, IntPtr oldLen, IntPtr newp, uint newlen);
@@ -67,12 +67,12 @@ namespace Zebble.Plugin.MBox
         public static HardwareVersion GetHardwareVersion()
         {
             var pLen = Marshal.AllocHGlobal(sizeof(int));
-            sysctlbyname(HardwareProperty, IntPtr.Zero, pLen, IntPtr.Zero, 0);
+            sysctlbyname(HARDWARE_PROPERTY, IntPtr.Zero, pLen, IntPtr.Zero, 0);
 
             var length = Marshal.ReadInt32(pLen);
 
             var pStr = Marshal.AllocHGlobal(length);
-            sysctlbyname(HardwareProperty, pStr, pLen, IntPtr.Zero, 0);
+            sysctlbyname(HARDWARE_PROPERTY, pStr, pLen, IntPtr.Zero, 0);
 
             var hardwareStr = Marshal.PtrToStringAnsi(pStr);
 

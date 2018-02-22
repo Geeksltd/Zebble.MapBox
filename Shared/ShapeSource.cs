@@ -18,18 +18,17 @@
             set;
         }
 
-        Annotation _shape = new Annotation();
+        Annotation shape = new Annotation();
         public Annotation Shape
         {
-            get => _shape;
+            get => shape;
             set
             {
-                _shape = value;
+                shape = value;
                 ShapeChanged.Raise();
             }
         }
 
         public AsyncEvent ShapeChanged = new AsyncEvent();
-
     }
 }

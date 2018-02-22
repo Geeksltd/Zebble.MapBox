@@ -1,9 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Runtime.InteropServices;
-using Foundation;
+﻿using Foundation;
 using Mapbox;
-using ObjCRuntime;
+using System.Collections.Generic;
 namespace Zebble.Plugin.MBox
 {
     public static class MGLOfflinePackExtensions
@@ -23,13 +20,14 @@ namespace Zebble.Plugin.MBox
             if (mbPack.Context != null)
             {
                 var info = new Dictionary<string, string>();
-                NSDictionary userInfo = NSKeyedUnarchiver.UnarchiveObject(mbPack.Context) as NSDictionary;
+                var userInfo = NSKeyedUnarchiver.UnarchiveObject(mbPack.Context) as NSDictionary;
                 foreach (NSObject key in userInfo.Keys)
-                {
                     info.Add(key.ToString(), userInfo[key].ToString());
-                }
+
+
                 output.Info = info;
             }
+
             return output;
         }
     }

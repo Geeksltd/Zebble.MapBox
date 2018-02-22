@@ -1,5 +1,4 @@
-﻿using System;
-using Mapbox;
+﻿using Mapbox;
 
 namespace Zebble.Plugin.MBox
 {

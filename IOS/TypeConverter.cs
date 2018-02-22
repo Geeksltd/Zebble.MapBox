@@ -1,5 +1,4 @@
-﻿using System;
-using CoreLocation;
+﻿using CoreLocation;
 using System.Collections.Generic;
 
 namespace Zebble.Plugin.MBox
@@ -12,6 +11,7 @@ namespace Zebble.Plugin.MBox
             {
                 return default(CLLocationCoordinate2D);
             }
+
             return position.ToCLCoordinate();
         }
 
@@ -26,11 +26,12 @@ namespace Zebble.Plugin.MBox
             {
                 return null;
             }
+
             var output = new List<Position>();
             foreach (CLLocationCoordinate2D coord in coordinates)
-            {
                 output.Add(FromCoordinateToPosition(coord));
-            }
+
+
             return output.ToArray();
         }
 
@@ -40,11 +41,12 @@ namespace Zebble.Plugin.MBox
             {
                 return new CLLocationCoordinate2D[0];
             }
+
             var output = new List<CLLocationCoordinate2D>();
             foreach (Position pos in positions)
-            {
                 output.Add((FromPositionToCoordinate(pos)));
-            }
+
+
             return output.ToArray();
         }
     }

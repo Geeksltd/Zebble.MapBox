@@ -2,14 +2,14 @@
 {
     public class PointAnnotation : Annotation
     {
-        Position _coordinate = new Position();
+        Position coordinate = new Position();
         public Position Coordinate
         {
-            get => _coordinate;
+            get => coordinate;
             set
             {
-                if (_coordinate == value) return;
-                _coordinate = value;
+                if (coordinate == value) return;
+                coordinate = value;
                 AnnotationCoordinateChanged.Raise();
                 AnnotationChanged.Raise();
             }

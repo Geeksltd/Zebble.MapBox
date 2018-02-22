@@ -1,9 +1,9 @@
-﻿using System;
+﻿using ModernHttpClient;
+// using Naxam.Controls.Mapbox.Forms;
+using Newtonsoft.Json;
+using System;
 using System.Net.Http;
 using System.Threading.Tasks;
-using ModernHttpClient;
-//using Naxam.Controls.Mapbox.Forms;
-using Newtonsoft.Json;
 
 namespace Zebble.Plugin.MBox
 {
@@ -17,10 +17,9 @@ namespace Zebble.Plugin.MBox
     {
         HttpClient client;
 
-        private static string BaseURL = "https://api.mapbox.com/";
+        static string BaseURL = "https://api.mapbox.com/";
         public static string AccessToken = "pk.eyJ1IjoiYmVocmFuZ21vaHNlbmkiLCJhIjoiY2pjeDB1cmo3MWlmcTJxbnVwMGcxeW1vNiJ9.WnBvcru9Xa4TTS5OoJc-Jg";
         public static string Username = "behrangmohseni";
-
 
         public MapBoxService()
         {
@@ -48,6 +47,7 @@ namespace Zebble.Plugin.MBox
                     System.Diagnostics.Debug.WriteLine("[EXCEPTION] " + ex.Message);
                 }
             }
+
             return null;
         }
 
@@ -70,6 +70,7 @@ namespace Zebble.Plugin.MBox
                     System.Diagnostics.Debug.WriteLine("[EXCEPTION] " + ex.Message);
                 }
             }
+
             return null;
         }
     }
