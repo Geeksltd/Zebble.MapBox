@@ -16,6 +16,6 @@ namespace Zebble.Plugin.MBox
             Coordinates = annotation.Coordinates;
         }
 
-        public Dictionary<string, object> Attributes { get; set; }
+        public Dictionary<string, object> Attributes { get; set; } = new Dictionary<string, object>();
     }
 }

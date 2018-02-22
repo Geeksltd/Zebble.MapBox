@@ -5,11 +5,18 @@
         public PolylineAnnotation()
         {
         }
-
+        Position[] _coordinates = new Position[1];
         public Position[] Coordinates
         {
-            get;
-            set;
+            get => _coordinates;
+            set
+            {
+                _coordinates = value;
+                AnnotationCoordinatesChanged.Raise();
+                AnnotationChanged.Raise();
+            }
         }
+
+        public AsyncEvent AnnotationCoordinatesChanged = new AsyncEvent();
     }
 }

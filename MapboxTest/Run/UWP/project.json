@@ -1,0 +1,30 @@
+﻿{
+  "dependencies": {
+    "Microsoft.NETCore.UniversalWindowsPlatform": "5.2.3",
+    "Newtonsoft.Json": "9.0.1",
+    "Zebble": "4.4.104",
+    "Zebble.CheckBox": "1.22.110",
+    "Zebble.DateTimePicker": "4.5.275",
+    "Zebble.Grid": "3.12.148",
+    "Zebble.IconButton": "3.20.268",
+    "Zebble.Inspector": "2.7.136",
+    "Zebble.ItemPicker": "3.12.155",
+    "Zebble.ListView": "3.17.143",
+    "Zebble.NavBarTabs": "2.6.340",
+    "Zebble.OptionsList": "3.14.123",
+    "Zebble.SearchInput": "3.18.266",
+    "Zebble.Switch": "1.31.235",
+    "Zebble.WebApi": "4.5.277"
+  },
+  "frameworks": {
+    "uap10.0.10240": {}
+  },
+  "runtimes": {
+    "win10-arm": {},
+    "win10-arm-aot": {},
+    "win10-x86": {},
+    "win10-x86-aot": {},
+    "win10-x64": {},
+    "win10-x64-aot": {}
+  }
+}

@@ -13,6 +13,7 @@ using System.ComponentModel;
 using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
+using Android.Widget;
 using Bitmap = Android.Graphics.Bitmap;
 using Sdk = Mapbox;
 using View = Android.Views.View;
@@ -37,8 +38,7 @@ namespace Zebble.Plugin.MBox
             View = (Map)renderer.View;
 
             SetupFunctions();
-            await View.WhenShown(() => { Thread.UI.Run(LoadMap); });
-            throw new NotImplementedException();
+            return await LoadMap();
         }
         int FindFreeId()
         {
@@ -47,14 +47,13 @@ namespace Zebble.Plugin.MBox
             return NextId;
         }
 
-        protected async Task LoadMap()
+        protected async Task<FrameLayout> LoadMap()
         {
             var activity = (AppCompatActivity)Renderer.Context;
             var view = new Android.Widget.FrameLayout(activity)
             {
                 Id = FindFreeId()
             };
-            View.Native = view;
 
             fragment = new MapViewFragment();
 
@@ -65,6 +64,7 @@ namespace Zebble.Plugin.MBox
             fragment.GetMapAsync(this);
             currentCamera = new Position();
             await Task.CompletedTask;
+            return view;
         }
 
         public void SetupFunctions()
@@ -81,11 +81,6 @@ namespace Zebble.Plugin.MBox
 
                 if (layer == null) return false;
 
-                // TODO
-                // layer.SetProperties(layer.Visibility,
-                //    isVisible ? Sdk.Style.Layers.PropertyFactory.Visibility(Sdk.Style.Layers.Property.Visible)
-                //        : Sdk.Style.Layers.PropertyFactory.Visibility(Sdk.Style.Layers.Property.None));
-
                 if (!IsCustom || View.MapStyle.CustomLayers == null) return true;
 
                 var count = View.MapStyle.CustomLayers.Count();
@@ -101,7 +96,7 @@ namespace Zebble.Plugin.MBox
                 return true;
             };
 
-            View.UpdateShapeOfSourceFunc = (Annotation annotation, string sourceId) =>
+            View.UpdateShapeOfSourceFunc = (annotation, sourceId) =>
             {
                 if (annotation == null || string.IsNullOrEmpty(sourceId)) return false;
 
@@ -383,14 +378,6 @@ namespace Zebble.Plugin.MBox
             else if (e.Action == NotifyCollectionChangedAction.Reset)
             {
                 // TODO
-                // var layers = map.Layers;
-                // foreach (var layer in layers)
-                // {
-                //    if (layer.Id.HasPrefix())
-                //    {
-                //        map.RemoveLayer(layer);
-                //    }
-                // }
             }
             else if (e.Action == NotifyCollectionChangedAction.Replace)
             {

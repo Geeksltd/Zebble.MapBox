@@ -4,10 +4,7 @@ namespace Zebble.Plugin.MBox
 {
     public class MultiPolylineFeature : MultiPolylineAnnotation, IFeature
     {
-        public MultiPolylineFeature()
-        {
-        }
-
+        public MultiPolylineFeature() { }
         public MultiPolylineFeature(MultiPolylineAnnotation annotation)
         {
             Id = annotation.Id;
@@ -19,6 +16,6 @@ namespace Zebble.Plugin.MBox
         public Dictionary<string, object> Attributes
         {
             get; set;
-        }
+        } = new Dictionary<string, object>();
     }
 }

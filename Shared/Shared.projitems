@@ -24,8 +24,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Layers\LineLayer.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Layers\SymbolLayer.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Map.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)MapBox.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)MapBox.WebView.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)MapBoxService.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)MapStyle.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)OfflinePack\OfflinePack.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)OfflinePack\OfflinePackProgress.cs" />
@@ -41,5 +40,8 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="$(MSBuildThisFileDirectory)Icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="$(MSBuildThisFileDirectory)Services\" />
   </ItemGroup>
 </Project>

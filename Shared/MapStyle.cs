@@ -84,18 +84,18 @@ namespace Zebble.Plugin.MBox
             }
         }
 
-        public AsyncEvent CustomSourcesChanged;
+        public AsyncEvent CustomSourcesChanged = new AsyncEvent();
 
-        public AsyncEvent CustomSourcesChanging;
+        public AsyncEvent CustomSourcesChanging = new AsyncEvent();
 
-        public AsyncEvent CustomLayersChanged;
+        public AsyncEvent CustomLayersChanged = new AsyncEvent();
 
-        public AsyncEvent CustomLayersChanging;
+        public AsyncEvent CustomLayersChanging = new AsyncEvent();
 
         public IEnumerable<ShapeSource> CustomSources { get; set; }
 
         public IEnumerable<Layer> CustomLayers { get; set; }
 
-        public Layer[] OriginalLayers { get; set; }
+        public Layer[] OriginalLayers { get; set; } = new Layer[1];
     }
 }

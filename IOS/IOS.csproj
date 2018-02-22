@@ -34,8 +34,11 @@
     <Reference Include="HtmlAgilityPack, Version=1.6.13.0, Culture=neutral, PublicKeyToken=bd319b19eaf3b43a, processorArchitecture=MSIL">
       <HintPath>..\packages\HtmlAgilityPack.1.6.13\lib\netstandard2.0\HtmlAgilityPack.dll</HintPath>
     </Reference>
-    <Reference Include="MapboxSDK.iOS, Version=1.0.6369.35154, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Xamarin.MapboxSDK.iOS.3.5.0\lib\Xamarin.iOS10\MapboxSDK.iOS.dll</HintPath>
+    <Reference Include="ModernHttpClient, Version=2.4.2.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\..\TestProjects\MapboxTest\packages\modernhttpclient.2.4.2\lib\Xamarin.iOS10\ModernHttpClient.dll</HintPath>
+    </Reference>
+    <Reference Include="Naxam.Mapbox.iOS, Version=3.7.3.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Naxam.Mapbox.iOS.3.7.3.1\lib\Xamarin.iOS10\Naxam.Mapbox.iOS.dll</HintPath>
     </Reference>
     <Reference Include="Newtonsoft.Json, Version=9.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\packages\Newtonsoft.Json.9.0.1\lib\portable-net45+wp80+win8+wpa81\Newtonsoft.Json.dll</HintPath>
@@ -56,8 +59,16 @@
     <Folder Include="Resources\" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="MapBoxRenderer.cs" />
+    <Compile Include="Extensions\IMGLOfflineRegionExtensions.cs" />
+    <Compile Include="Extensions\MGLOfflinePackExtensions.cs" />
+    <Compile Include="Extensions\MGLOfflinePackProgressExtensions.cs" />
+    <Compile Include="Extensions\MGLShapeExtensions.cs" />
+    <Compile Include="Extensions\PositionExtensions.cs" />
+    <Compile Include="Extensions\UIDeviceExtensions.cs" />
+    <Compile Include="MapViewRenderer.cs" />
+    <Compile Include="OfflineStorageService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TypeConverter.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
