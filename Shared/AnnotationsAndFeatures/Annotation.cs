@@ -1,6 +1,6 @@
 ﻿namespace Zebble.Plugin.MBox
 {
-    public class Annotation
+    public partial class Annotation
     {
         string id = string.Empty;
         public string Id

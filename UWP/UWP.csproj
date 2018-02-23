@@ -107,6 +107,10 @@
     <None Include="project.json" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Annotation.cs" />
+    <Compile Include="MapBox.cs" />
+    <Compile Include="MapBox.WebView.cs" />
+    <Compile Include="MapboxRenderer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Properties\UWP.rd.xml" />
   </ItemGroup>
