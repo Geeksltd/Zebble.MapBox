@@ -1,4 +1,4 @@
-[logo]: https://raw.githubusercontent.com/Geeksltd/Zebble.MapBox/master/Shared/NuGet/Icon.png "Zebble.MapBox"
+[logo]: https://raw.githubusercontent.com/Geeksltd/Zebble.MapBox/master/Shared/Icon.png "Zebble.MapBox"
 
 
 ## Zebble.MapBox
