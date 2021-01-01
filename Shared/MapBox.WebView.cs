@@ -1,11 +1,11 @@
-﻿
-namespace Zebble.Plugin
+﻿namespace Zebble.Plugin
 {
     using System;
     using System.Linq;
     using System.Text;
     using System.Threading.Tasks;
-    using Zebble.Services;
+    using Olive;
+    using Olive.GeoLocation;
 
     partial class MapBox : WebView
     {
@@ -16,7 +16,7 @@ namespace Zebble.Plugin
             await base.OnPreRender();
             MergeExternalResources = false;
 
-            if (AccessToken.LacksValue())
+            if (AccessToken.IsEmpty())
                 throw new Exception("MapBox access token is not set. Expected config key: 'MapBox.Access.Token'.");
 
             AnnotationAdded += RenderAnnotation;
@@ -25,13 +25,13 @@ namespace Zebble.Plugin
 
             Html = GenerateHtml();
 
-            LoadFinished.Handle(() => OnShown());
+            LoadFinished.Handle(OnShown);
 
             BrowserNavigating.Handle((e) =>
             {
                 if (e.Url.Contains("Annotation_Tap"))
                 {
-                    var annotation = Annotations.FirstOrDefault(a => a.SubTitle == e.Url.TrimBefore("Annotation_Tap_").Remove("Annotation_Tap_"));
+                    var annotation = Annotations.FirstOrDefault(a => a.SubTitle == e.Url.RemoveBefore("Annotation_Tap_").Remove("Annotation_Tap_"));
                     AnnotationClicked.Invoke(annotation);
                     e.Cancel = true;
                 }

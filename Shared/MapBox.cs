@@ -3,11 +3,12 @@
     using System;
     using Zebble;
     using System.Collections.Generic;
-    using Zebble.Services;
+    using Olive;
+    using Olive.GeoLocation;
 
     public partial class MapBox
     {
-        GeoLocation center = new Services.GeoLocation(51.5, 0.12);
+        GeoLocation center = new GeoLocation(51.5, 0.12);
         float zoom = 13;
         bool showsUserLocation = true;
         List<Annotation> annotations = new List<Annotation>();
@@ -18,7 +19,7 @@
         internal event Action<GeoLocation, GeoLocation> FitBoundsCalled;
         public event Action<Annotation> AnnotationClicked;
 
-        public MapBox() => AccessToken = Config.Get("MapBox.Access.Token");
+        public MapBox() => AccessToken = Zebble.Config.Get("MapBox.Access.Token");
 
         public string AccessToken { get; set; }
         public string StyleUrl { get; set; }
@@ -27,9 +28,9 @@
 
         public IEnumerable<Annotation> Annotations => annotations;
 
-        public Services.GeoLocation Center
+        public GeoLocation Center
         {
-            get { return center; }
+            get => center;
             set
             {
                 if (center == value || value == null) return;
@@ -40,7 +41,7 @@
 
         public bool ShowsUserLocation
         {
-            get { return showsUserLocation; }
+            get => showsUserLocation;
             set
             {
                 if (showsUserLocation == value) return;
@@ -50,7 +51,7 @@
 
         public float Zoom
         {
-            get { return zoom; }
+            get => zoom;
             set
             {
                 if (zoom.AlmostEquals(value)) return;

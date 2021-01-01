@@ -1,6 +1,6 @@
 ﻿namespace Zebble.Plugin
 {
-    using Zebble.Services;
+    using Olive.GeoLocation;
 
     partial class MapBox
     {
