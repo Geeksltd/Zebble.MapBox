@@ -19,7 +19,7 @@
         internal event Action<GeoLocation, GeoLocation> FitBoundsCalled;
         public event Action<Annotation> AnnotationClicked;
 
-        public MapBox() => AccessToken = Zebble.Config.Get("MapBox.Access.Token");
+        public MapBox() => AccessToken = Config.Get("MapBox.Access.Token");
 
         public string AccessToken { get; set; }
         public string StyleUrl { get; set; }

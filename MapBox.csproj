@@ -67,7 +67,7 @@
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Olive.GeoLocation" Version="2.1.106" />
-    <PackageReference Include="Zebble.WebView" Version="4.3.266" />
+    <PackageReference Include="Zebble.WebView" Version="4.3.269" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Android\" />
